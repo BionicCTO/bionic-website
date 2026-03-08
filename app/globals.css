@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F5F0EB;
+  color: #1A1A1A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(232, 112, 90, 0.2);
+  color: #1A1A1A;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F0EB;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E0DAD2;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9B9389;
+}
+
+/* Reading progress bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #E8705A;
+  z-index: 100;
+  transition: width 0.1s linear;
+}
+
+/* MDX Prose styles */
+.prose {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.prose h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.prose h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.3px;
+}
+
+.prose h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #5C5650;
+  margin-bottom: 1.5rem;
+}
+
+.prose strong {
+  color: #1A1A1A;
+  font-weight: 600;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose blockquote {
+  border-left: 3px solid #E8705A;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #5C5650;
+}
+
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose li {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #5C5650;
+  margin-bottom: 0.5rem;
+}
+
+.prose a {
+  color: #E8705A;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.prose a:hover {
+  color: #C95A46;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid #E0DAD2;
+  margin: 3rem 0;
+}
+
+.prose code {
+  background: rgba(232, 112, 90, 0.08);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.prose pre {
+  background: #1A1A1A;
+  color: #F5F0EB;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* Stagger animation utility */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
