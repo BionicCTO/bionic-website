@@ -2,7 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+/* Gambetta — Body / Editorial font */
+@font-face {
+  font-family: 'Gambetta';
+  src: url('/fonts/Gambetta-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gambetta';
+  src: url('/fonts/Gambetta-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gambetta';
+  src: url('/fonts/Gambetta-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gambetta';
+  src: url('/fonts/Gambetta-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* GeneralSans — Headings / UI font */
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('/fonts/GeneralSans-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Base styles */
 html {
@@ -62,26 +102,26 @@ body {
 }
 
 .prose h1 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'GeneralSans', system-ui, sans-serif;
   font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.15;
+  font-weight: 600;
+  line-height: 1.2;
   margin-bottom: 1rem;
-  letter-spacing: -0.5px;
+  letter-spacing: -2px;
 }
 
 .prose h2 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'GeneralSans', system-ui, sans-serif;
   font-size: 1.75rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  letter-spacing: -0.3px;
+  letter-spacing: -1px;
 }
 
 .prose h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: 'GeneralSans', system-ui, sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   margin-top: 2rem;
@@ -89,8 +129,10 @@ body {
 }
 
 .prose p {
-  font-size: 1.0625rem;
-  line-height: 1.8;
+  font-family: 'Gambetta', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.7;
   color: #5C5650;
   margin-bottom: 1.5rem;
 }
@@ -118,8 +160,10 @@ body {
 }
 
 .prose li {
-  font-size: 1.0625rem;
-  line-height: 1.8;
+  font-family: 'Gambetta', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.7;
   color: #5C5650;
   margin-bottom: 0.5rem;
 }

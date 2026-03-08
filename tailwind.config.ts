@@ -31,8 +31,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        editorial: ['Playfair Display', 'Georgia', 'serif'],
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        editorial: ['GeneralSans', 'system-ui', 'sans-serif'],
+        sans: ['Gambetta', 'Georgia', 'serif'],
         mono: ['SF Mono', 'Fira Code', 'monospace'],
       },
       animation: {
