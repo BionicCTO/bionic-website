@@ -13,14 +13,11 @@ export default function Footer() {
             <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-16">
               {/* Left: Logo + Built by */}
               <div>
-                <Link href="/" className="inline-block mb-6">
+                <Link href="/" className="inline-block mb-6 -ml-1">
                   <Image src="/images/bionic-logo.svg" alt="BIONIC" width={120} height={50} />
                 </Link>
                 <div className="mb-1 text-base text-text-secondary">
                   Built by <Link href="/about" className="underline hover:text-text-primary transition-colors">Amit Patel</Link>
-                </div>
-                <div className="mb-6 text-base text-text-secondary">
-                  Powered by <span className="underline">Next.js</span>
                 </div>
 
                 {/* Social icons */}
@@ -38,18 +35,12 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* Right: Nav columns */}
-              <div className="grid grid-cols-2 gap-8">
-                <div className="flex flex-col gap-2">
-                  <Link href="/" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Home</Link>
-                  <Link href="/about" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">About</Link>
-                  <Link href="/contact" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Contact</Link>
-                  <Link href="/subscribe" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Subscribe</Link>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <Link href="/privacy-policy" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Privacy Policy</Link>
-                  <Link href="/terms" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Terms</Link>
-                </div>
+              {/* Right: Nav links */}
+              <div className="flex flex-col gap-2">
+                <Link href="/" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Home</Link>
+                <Link href="/about" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">About</Link>
+                <Link href="/contact" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Contact</Link>
+                <Link href="/subscribe" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Subscribe</Link>
               </div>
             </div>
           </div>
