@@ -58,7 +58,7 @@ export default function NewsletterSignup({ variant = 'default' }: { variant?: 'd
   return (
     <form
       onSubmit={handleSubmit}
-      className={`w-full ${isDark ? 'grid grid-cols-1 gap-4' : 'grid grid-cols-[1fr_max-content] gap-4'}`}
+      className="w-full grid grid-cols-[1fr_max-content] gap-4"
     >
       <input
         type="email"
@@ -77,7 +77,7 @@ export default function NewsletterSignup({ variant = 'default' }: { variant?: 'd
         disabled={loading}
         className={`px-6 py-2 rounded-lg text-sm font-medium transition-all min-h-[2.75rem] border ${
           isDark
-            ? 'bg-white text-black border-white hover:bg-[#f3f3f2] w-full'
+            ? 'bg-white text-black border-white hover:bg-[#f3f3f2]'
             : 'bg-black text-white border-black hover:bg-[#242121]'
         }`}
       >

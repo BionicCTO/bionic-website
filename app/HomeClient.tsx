@@ -74,7 +74,7 @@ export default function HomeClient({ articles }: { articles: ArticleMeta[] }) {
       </section>
 
       {/* ── Newsletter Section (dark, "Join the uprising") ── */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden rounded-2xl mx-[3%] md:mx-[5%] mb-16">
         <div className="relative z-10 px-[5%]">
           <div className="max-w-[48rem] mx-auto py-16 md:py-20">
             <div className="text-center">
@@ -85,7 +85,7 @@ export default function HomeClient({ articles }: { articles: ArticleMeta[] }) {
               <p className="text-white/60 text-base mb-8">
                 Field notes from the front lines. Weekly.
               </p>
-              <div className="max-w-[30rem] mx-auto">
+              <div className="max-w-[36rem] mx-auto">
                 <NewsletterSignup variant="dark" />
                 <p className="text-white/40 text-xs mt-4">
                   By clicking Sign Up you&apos;re confirming that you agree with our{' '}
