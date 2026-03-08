@@ -26,7 +26,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
                 Enterprises are built to deploy human capital.
               </p>
               <p className="text-text-primary font-medium text-lg">
-                AI-native operations are built to deploy supervised digital labour.
+                AI-native operations assume a different unit of work entirely — digital labour.
               </p>
               <p className="text-text-secondary">
                 It&apos;s not possible to make the transition inside an entity whose every process, governance structure and cost model assumes a <strong className="text-text-primary">human as the unit of work.</strong>
@@ -87,27 +87,17 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
               The Work
             </h2>
             <div className="space-y-4 text-text-secondary text-base leading-relaxed">
-              <p>I operate where code, cover and care collide.</p>
               <p>
-                I&apos;ve turned around a £450M healthcare business. Operationally. Financially. Then executed a 2-step divestment at 2.5x above board expectations.
-              </p>
-              <p>
-                Built a digital MGA focused on health insurance. Took it through the FCA sandbox. Brought a capacity line from Japan. Worked enterprise product and licensing deals with major insurers.
-              </p>
-              <p>
-                Shaped Bupa&apos;s £3B UK insurance and provision portfolio. Led multiple M&amp;A deals. Deployed capital that created a unicorn.
-              </p>
-              <p>
-                I chair the International Federation of Health Plans&apos; AI and emerging tech network. 80+ health insurers. 40+ markets. 250M+ lives. We work on AI strategy, transformation and governance at scale.
+                I&apos;ve turned around a £450M healthcare business. Built an FCA-regulated insurtech from scratch. Deployed capital that created a unicorn. Chaired the AI and emerging tech network for 80+ health insurers across 40+ markets.
               </p>
               <p className="text-text-primary font-medium">
-                I&apos;ve operated on patients. I&apos;ve operated on P&amp;Ls.
+                But the real work isn&apos;t any of that.
+              </p>
+              <p>
+                The real work is showing leaders what happens when you stop optimising the old architecture — and start building the new one. When you stop deploying humans into processes designed in the 1990s and start designing for the workforce you&apos;ll actually have: <strong className="text-text-primary">part carbon, part code.</strong>
               </p>
               <p className="text-text-primary font-medium">
-                I know what works.
-              </p>
-              <p className="text-text-primary font-medium">
-                I know what kills.
+                I know what breaks. And I know what builds.
               </p>
             </div>
           </motion.div>
