@@ -18,21 +18,21 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="font-editorial text-[2.5rem] md:text-[3.5rem] font-semibold leading-[1.1] mb-8">
+            <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-6">
               My Manifesto
-            </h1>
+            </h2>
             <div className="space-y-6 text-base leading-relaxed">
               <p className="text-text-primary font-medium text-lg">
                 Enterprises are built to deploy human capital.
               </p>
               <p className="text-text-primary font-medium text-lg">
-                AI-native operations assume a different unit of work entirely — digital labour.
+                AI-native operations assume a different unit of work entirely — <strong>digital labour.</strong>
               </p>
               <p className="text-text-primary">
-                It&apos;s not possible to make the transition inside an entity whose every process, governance structure and cost model assumes a <strong className="text-text-primary">human as the unit of work.</strong>
+                It&apos;s not possible to make the transition inside an entity whose every process, governance structure and cost model assumes a human as the unit of work.
               </p>
               <p className="text-text-primary font-medium text-lg">
-                This is not a technology problem. It is a structural one.<br />
+                This is not a technology problem. It is a <strong>structural</strong> one.<br />
                 And it is the problem every enterprise is now trying to solve.
               </p>
             </div>
