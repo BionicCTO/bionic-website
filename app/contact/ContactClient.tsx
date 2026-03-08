@@ -59,7 +59,7 @@ export default function ContactClient() {
                 <div>
                   <span className="text-sm uppercase tracking-[0.15em] text-text-muted block mb-1">LinkedIn</span>
                   <a
-                    href="https://www.linkedin.com/in/amitpatel"
+                    href="https://www.linkedin.com/in/amitpatel911"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-accent transition-colors"
