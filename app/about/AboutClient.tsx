@@ -91,13 +91,13 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             </h2>
             <div className="space-y-6 text-text-primary text-lg leading-relaxed">
               <p>
-                I&apos;ve turned around a £450M healthcare business. Built an FCA-regulated insurtech from scratch. Deployed capital that created a unicorn. Chaired the AI and emerging tech network for 80+ health insurers across 40+ markets.
+                I&apos;ve been a surgeon. I&apos;ve turned around a £450M healthcare business. Built an FCA-regulated insurtech from scratch. Deployed capital that created a unicorn. I chair the AI and emerging tech network for 80+ health insurers across 40+ markets.
               </p>
               <p>
                 But the real work isn&apos;t any of that.
               </p>
               <p>
-                The real work is showing leaders what happens when you stop optimising the old architecture — and start building the new one. When you stop deploying humans into processes designed in the 1990s and start designing for the workforce you&apos;ll actually have: <strong>part carbon, part code.</strong>
+                The real work is showing leaders what happens when you stop optimising the old architecture — and start building the new one. When you stop deploying humans into processes designed in the 1990s and start designing for a workforce that is <strong>part carbon, part code.</strong>
               </p>
               <p>
                 I know what breaks. And I know what builds.
@@ -190,21 +190,20 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             </h2>
             <div className="space-y-6 text-text-primary text-lg leading-relaxed">
               <p>
-                Board members who know something huge is wrong but can&apos;t name it.
+                Board members who know AI changes everything but not where to start, how fast to move, or who should own it.
               </p>
               <p>
-                Executives done with digital transformation that doesn&apos;t transform anything.
+                Executives done with transformation that doesn&apos;t transform anything.
               </p>
               <p>
-                Operators who want to fix the system. Not just optimise it.
+                Operators who want to rebuild the system. Not optimise it.
               </p>
               <p>
                 Founders building at the edge.
               </p>
               <p>
-                If you&apos;re here, you&apos;re not satisfied with incrementalism.
+                If you&apos;re still waiting for permission, this isn&apos;t for you.
               </p>
-              <p>Good.</p>
             </div>
           </motion.div>
         </div>
