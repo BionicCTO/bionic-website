@@ -11,7 +11,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
     <>
       {/* ── Section 1: My Manifesto (left-aligned text + right image) ── */}
       <section className="max-w-[80rem] mx-auto px-[5%] pt-12 md:pt-20 pb-16 md:pb-24">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left column — text */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -50,9 +50,9 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <Image
               src="/images/blog-image-1.png"
               alt="Illustration"
-              width={400}
-              height={400}
-              className="w-full max-w-[400px] h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-[500px] h-auto"
             />
           </motion.div>
         </div>
@@ -60,7 +60,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
 
       {/* ── Section 2: The Work (right-aligned text + left image) ── */}
       <section className="max-w-[80rem] mx-auto px-[5%] pb-16 md:pb-24">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left column — creature illustration */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -72,9 +72,9 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <Image
               src="/images/blog-image-2.png"
               alt="Illustration"
-              width={400}
-              height={400}
-              className="w-full max-w-[400px] h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-[500px] h-auto"
             />
           </motion.div>
 
@@ -109,7 +109,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
 
       {/* ── Section 3: What I Write (left-aligned text + right image) ── */}
       <section className="max-w-[80rem] mx-auto px-[5%] pb-16 md:pb-24">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left column — text */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -149,9 +149,9 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <Image
               src="/images/blog-image-3.png"
               alt="Illustration"
-              width={400}
-              height={400}
-              className="w-full max-w-[400px] h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-[500px] h-auto"
             />
           </motion.div>
         </div>
@@ -159,7 +159,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
 
       {/* ── Section 4: Who This Is For (right-aligned text + left image) ── */}
       <section className="max-w-[80rem] mx-auto px-[5%] pb-16 md:pb-24">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left column — creature illustration */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -171,9 +171,9 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <Image
               src="/images/blog-image-1.png"
               alt="Illustration"
-              width={400}
-              height={400}
-              className="w-full max-w-[400px] h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-[500px] h-auto"
             />
           </motion.div>
 
