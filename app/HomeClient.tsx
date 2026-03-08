@@ -74,7 +74,7 @@ export default function HomeClient({ articles }: { articles: ArticleMeta[] }) {
       </section>
 
       {/* ── Newsletter Section (dark, "Join the uprising") ── */}
-      <section className="relative overflow-hidden rounded-2xl mx-[3%] md:mx-[5%] mb-16">
+      <section className="relative overflow-hidden mb-16">
         <div className="relative z-10 px-[5%]">
           <div className="max-w-[48rem] mx-auto py-16 md:py-20">
             <div className="text-center">
