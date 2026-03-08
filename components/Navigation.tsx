@@ -35,21 +35,21 @@ export default function Navigation() {
             <div className="hidden md:flex items-center gap-1 -ml-4">
               <Link
                 href="/"
-                className="text-sm px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
+                className="text-base px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
                 Wild Thoughts
               </Link>
               <span className="text-text-muted">/</span>
               <Link
                 href="/about"
-                className="text-sm px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
+                className="text-base px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
                 About
               </Link>
               <span className="text-text-muted">/</span>
               <Link
                 href="/subscribe"
-                className="text-sm px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
+                className="text-base px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
                 Subscribe
               </Link>
@@ -71,7 +71,7 @@ export default function Navigation() {
             <div className="hidden md:flex items-center ml-auto">
               <Link
                 href="/contact"
-                className="text-sm px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
+                className="text-base px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
                 Contact
               </Link>
