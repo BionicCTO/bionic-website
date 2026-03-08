@@ -34,13 +34,6 @@ export default function Navigation() {
             {/* Left nav links — Webflow style with separator slashes and hover bg */}
             <div className="hidden md:flex items-center gap-1 -ml-4">
               <Link
-                href="/"
-                className="text-base px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
-              >
-                Wild Thoughts
-              </Link>
-              <span className="text-text-muted">/</span>
-              <Link
                 href="/about"
                 className="text-base px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
@@ -112,9 +105,6 @@ export default function Navigation() {
             className="fixed inset-0 z-40 bg-bg pt-24 px-8 md:hidden"
           >
             <div className="flex flex-col gap-6">
-              <Link href="/" onClick={() => setMobileOpen(false)} className="text-2xl font-editorial">
-                Wild Thoughts
-              </Link>
               <Link href="/about" onClick={() => setMobileOpen(false)} className="text-2xl font-editorial">
                 About
               </Link>
