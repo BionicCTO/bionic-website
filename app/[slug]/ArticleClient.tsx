@@ -73,7 +73,7 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
             <div className="h-8" />
 
             {meta.subtitle && (
-              <p className="text-text-secondary text-lg md:text-[1.125rem] leading-relaxed max-w-[40rem]">
+              <p className="text-[#1A1A1A] text-lg md:text-[1.125rem] leading-relaxed max-w-[40rem]">
                 {meta.subtitle}
               </p>
             )}
@@ -83,7 +83,7 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
 
       {/* ── Article Content ── */}
       <section className="px-[5%]">
-        <div className="max-w-[80rem] mx-auto py-12 md:py-[7rem]">
+        <div className="max-w-[80rem] mx-auto pt-0 pb-12 md:pb-[5rem]">
           <div className="max-w-[48rem] mx-auto">
             <motion.div
               initial={{ opacity: 0 }}

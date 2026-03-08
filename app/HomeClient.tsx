@@ -25,15 +25,14 @@ export default function HomeClient({ articles }: { articles: ArticleMeta[] }) {
             >
               {/* Hero image */}
               {article.heroImage && (
-                <Link href={`/${article.slug}`} className="group/img block mb-6 relative">
+                <Link href={`/${article.slug}`} className="group/img block mb-6">
                   <Image
                     src={article.heroImage}
                     alt={article.title}
                     width={768}
                     height={432}
-                    className="w-full h-auto"
+                    className="w-full h-auto transition-opacity duration-300 group-hover/img:opacity-80"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/15 transition-colors duration-300" />
                 </Link>
               )}
 
