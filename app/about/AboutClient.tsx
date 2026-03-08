@@ -121,22 +121,20 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
               What I Write
             </h2>
             <div className="space-y-6 text-text-primary text-lg leading-relaxed">
-              <p>This isn&apos;t theory. It&apos;s field notes.</p>
-              <p>I document four things:</p>
+              <p>Field notes from the frontier.</p>
               <p>
-                <strong>BUILD.</strong> AI-native architecture. Evaluation. Agents. Infrastructure. How to actually build systems that work.
+                <strong>BUILD.</strong> AI-native architecture. Agents. Evaluation. How to build systems that actually work.
               </p>
               <p>
-                <strong>GOVERN.</strong> Board oversight. Risk. AI policy. Accountability. How to control what you&apos;ve built.
+                <strong>GOVERN.</strong> Board oversight. Risk. AI policy. How to control what you&apos;ve built.
               </p>
               <p>
-                <strong>TRANSFORM.</strong> Venture build. Transformation strategy. Operating models. How to change without breaking.
+                <strong>TRANSFORM.</strong> Operating models. Venture build. How to change without breaking.
               </p>
               <p>
-                <strong>PREPARE.</strong> Future of work. Education. Critical thinking. How to ready your people.
+                <strong>PREPARE.</strong> Future of work. Education. How to ready your people.
               </p>
-              <p>No consultants&apos; slide decks. No permission-seeking.</p>
-              <p>Just what&apos;s working at the intersection of AI, insurance and healthcare. And what isn&apos;t.</p>
+              <p>No slide decks. No permission-seeking. No lip service.</p>
             </div>
           </motion.div>
 
