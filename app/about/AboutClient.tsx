@@ -31,8 +31,9 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
               <p className="text-text-secondary">
                 It&apos;s not possible to make the transition inside an entity whose every process, governance structure and cost model assumes a <strong className="text-text-primary">human as the unit of work.</strong>
               </p>
-              <p className="text-accent font-medium text-lg">
-                This is not a technology problem. It is a structural one. And it is the problem every enterprise is now trying to solve.
+              <p className="text-text-primary font-medium text-lg">
+                This is not a technology problem. It is a structural one.<br />
+                And it is the problem every enterprise is now trying to solve.
               </p>
             </div>
           </motion.div>
