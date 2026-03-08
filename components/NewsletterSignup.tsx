@@ -68,7 +68,7 @@ export default function NewsletterSignup({ variant = 'default' }: { variant?: 'd
         required
         className={`w-full px-3 py-2 rounded-lg text-base border outline-none transition-all min-h-[2.75rem] ${
           isDark
-            ? 'bg-white border-black text-black placeholder:text-black/40 focus:border-black focus:shadow-[0_0_0_4px_rgba(255,255,255,0.1)]'
+            ? 'bg-white border-white text-[#1A1A1A] placeholder:text-[#5C5650] focus:border-white focus:shadow-[0_0_0_4px_rgba(255,255,255,0.1)]'
             : 'bg-white border-[#b4b0ac] text-text-primary placeholder:text-black/50 hover:bg-[#f3f3f2] focus:bg-[#f3f3f2] focus:border-black focus:shadow-[0_0_0_4px_rgba(0,0,0,0.1)]'
         }`}
       />
