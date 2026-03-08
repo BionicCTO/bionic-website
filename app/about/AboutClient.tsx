@@ -28,7 +28,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
               <p className="text-text-primary font-medium text-lg">
                 AI-native operations assume a different unit of work entirely — digital labour.
               </p>
-              <p className="text-text-secondary">
+              <p className="text-text-primary">
                 It&apos;s not possible to make the transition inside an entity whose every process, governance structure and cost model assumes a <strong className="text-text-primary">human as the unit of work.</strong>
               </p>
               <p className="text-text-primary font-medium text-lg">
@@ -87,7 +87,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-6">
               The Work
             </h2>
-            <div className="space-y-4 text-text-secondary text-base leading-relaxed">
+            <div className="space-y-4 text-text-primary text-base leading-relaxed">
               <p>
                 I&apos;ve turned around a £450M healthcare business. Built an FCA-regulated insurtech from scratch. Deployed capital that created a unicorn. Chaired the AI and emerging tech network for 80+ health insurers across 40+ markets.
               </p>
@@ -118,7 +118,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-6">
               What I Write
             </h2>
-            <div className="space-y-4 text-text-secondary text-base leading-relaxed">
+            <div className="space-y-4 text-text-primary text-base leading-relaxed">
               <p>This isn&apos;t theory. It&apos;s field notes.</p>
               <p>I document four things:</p>
               <p>
@@ -188,7 +188,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-6">
               Who This Is For
             </h2>
-            <div className="space-y-4 text-text-secondary text-base leading-relaxed">
+            <div className="space-y-4 text-text-primary text-base leading-relaxed">
               <p>
                 Board members who know something huge is wrong but can&apos;t name it.
               </p>
@@ -253,7 +253,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-3">
               Read my thoughts
             </h2>
-            <p className="text-text-secondary text-base">Read articles related.</p>
+            <p className="text-text-primary text-base">Read articles related.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -303,7 +303,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
                     </Link>
                   </div>
 
-                  <p className="text-text-secondary text-sm leading-relaxed line-clamp-2">
+                  <p className="text-text-primary text-sm leading-relaxed line-clamp-2">
                     {article.subtitle}
                   </p>
                 </motion.div>
