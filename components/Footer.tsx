@@ -40,7 +40,7 @@ export default function Footer() {
                 <Link href="/" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Home</Link>
                 <Link href="/about" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">About</Link>
                 <Link href="/contact" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Contact</Link>
-                <Link href="/subscribe" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Subscribe</Link>
+                <Link href="/#subscribe" className="text-sm font-semibold py-1 hover:text-[#b4b0ac] transition-colors">Subscribe</Link>
               </div>
             </div>
           </div>

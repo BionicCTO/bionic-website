@@ -48,7 +48,7 @@ export default function Navigation() {
               </Link>
               <span className="text-text-muted">/</span>
               <Link
-                href="/subscribe"
+                href="/#subscribe"
                 className="text-base px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
                 Subscribe
@@ -118,7 +118,7 @@ export default function Navigation() {
               <Link href="/about" onClick={() => setMobileOpen(false)} className="text-2xl font-editorial">
                 About
               </Link>
-              <Link href="/subscribe" onClick={() => setMobileOpen(false)} className="text-2xl font-editorial">
+              <Link href="/#subscribe" onClick={() => setMobileOpen(false)} className="text-2xl font-editorial">
                 Subscribe
               </Link>
               <hr className="border-border my-4" />
