@@ -30,7 +30,7 @@ export default function ContactClient() {
               href="https://cal.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex px-8 py-4 bg-text-primary text-bg rounded-full text-base font-medium hover:bg-accent transition-colors"
+              className="inline-flex px-8 py-4 bg-text-primary text-bg rounded-lg text-base font-medium hover:bg-accent transition-colors"
             >
               Book a Call →
             </a>
