@@ -120,20 +120,20 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-6">
               What I Write
             </h2>
-            <div className="space-y-4 text-text-primary text-base leading-relaxed">
+            <div className="space-y-6 text-text-primary text-lg leading-relaxed">
               <p>This isn&apos;t theory. It&apos;s field notes.</p>
               <p>I document four things:</p>
               <p>
-                <strong className="text-text-primary">BUILD.</strong> AI-native architecture. Evaluation. Agents. Infrastructure. How to actually build systems that work.
+                <strong>BUILD.</strong> AI-native architecture. Evaluation. Agents. Infrastructure. How to actually build systems that work.
               </p>
               <p>
-                <strong className="text-text-primary">GOVERN.</strong> Board oversight. Risk. AI policy. Accountability. How to control what you&apos;ve built.
+                <strong>GOVERN.</strong> Board oversight. Risk. AI policy. Accountability. How to control what you&apos;ve built.
               </p>
               <p>
-                <strong className="text-text-primary">TRANSFORM.</strong> Venture build. Transformation strategy. Operating models. How to change without breaking.
+                <strong>TRANSFORM.</strong> Venture build. Transformation strategy. Operating models. How to change without breaking.
               </p>
               <p>
-                <strong className="text-text-primary">PREPARE.</strong> Future of work. Education. Critical thinking. How to ready your people.
+                <strong>PREPARE.</strong> Future of work. Education. Critical thinking. How to ready your people.
               </p>
               <p>No consultants&apos; slide decks. No permission-seeking.</p>
               <p>Just what&apos;s working at the intersection of AI, insurance and healthcare. And what isn&apos;t.</p>
@@ -190,7 +190,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-6">
               Who This Is For
             </h2>
-            <div className="space-y-4 text-text-primary text-base leading-relaxed">
+            <div className="space-y-6 text-text-primary text-lg leading-relaxed">
               <p>
                 Board members who know something huge is wrong but can&apos;t name it.
               </p>
@@ -203,10 +203,10 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
               <p>
                 Founders building at the edge.
               </p>
-              <p className="text-text-primary font-medium">
+              <p>
                 If you&apos;re here, you&apos;re not satisfied with incrementalism.
               </p>
-              <p className="text-text-primary font-medium">Good.</p>
+              <p>Good.</p>
             </div>
           </motion.div>
         </div>
