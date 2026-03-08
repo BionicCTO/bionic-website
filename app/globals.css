@@ -129,12 +129,13 @@ body {
 
 .prose h2 {
   font-family: 'GeneralSans', system-ui, sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.75rem;
+  font-weight: 600;
   line-height: 1.2;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   letter-spacing: -0.5px;
+  color: #000000;
 }
 
 .prose h3 {
@@ -150,13 +151,13 @@ body {
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.7;
-  color: #5C5650;
-  margin-bottom: 1.5rem;
+  color: #000000;
+  margin-bottom: 1rem;
 }
 
 .prose strong {
-  color: #1A1A1A;
-  font-weight: 600;
+  color: #000000;
+  font-weight: 700;
 }
 
 .prose em {
@@ -164,11 +165,11 @@ body {
 }
 
 .prose blockquote {
-  border-left: 3px solid #E8705A;
-  padding-left: 1.5rem;
-  margin: 2rem 0;
+  border-left: 2px solid #000000;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
   font-style: italic;
-  color: #5C5650;
+  color: #000000;
 }
 
 .prose ul, .prose ol {
@@ -181,19 +182,19 @@ body {
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.7;
-  color: #5C5650;
+  color: #000000;
   margin-bottom: 0.5rem;
 }
 
 .prose a {
-  color: #E8705A;
+  color: #000000;
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s;
 }
 
 .prose a:hover {
-  color: #C95A46;
+  color: #4c4945;
 }
 
 .prose hr {
