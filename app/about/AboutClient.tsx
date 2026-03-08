@@ -21,18 +21,20 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-6">
               My Manifesto
             </h2>
-            <div className="space-y-6 text-base leading-relaxed">
-              <p className="text-text-primary font-medium text-lg">
+            <div className="space-y-6 text-text-primary text-lg leading-relaxed">
+              <p>
                 Enterprises are built to deploy human capital.
               </p>
-              <p className="text-text-primary font-medium text-lg">
+              <p>
                 AI-native operations assume a different unit of work entirely — <strong>digital labour.</strong>
               </p>
-              <p className="text-text-primary">
+              <p>
                 It&apos;s not possible to make the transition inside an entity whose every process, governance structure and cost model assumes a human as the unit of work.
               </p>
-              <p className="text-text-primary font-medium text-lg">
-                This is not a technology problem. It is a <strong>structural</strong> one.<br />
+              <p>
+                This is not a technology problem. It is a <strong>structural</strong> one.
+              </p>
+              <p>
                 And it is the problem every enterprise is now trying to solve.
               </p>
             </div>
@@ -87,17 +89,17 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-6">
               The Work
             </h2>
-            <div className="space-y-4 text-text-primary text-base leading-relaxed">
+            <div className="space-y-6 text-text-primary text-lg leading-relaxed">
               <p>
                 I&apos;ve turned around a £450M healthcare business. Built an FCA-regulated insurtech from scratch. Deployed capital that created a unicorn. Chaired the AI and emerging tech network for 80+ health insurers across 40+ markets.
               </p>
-              <p className="text-text-primary font-medium">
+              <p>
                 But the real work isn&apos;t any of that.
               </p>
               <p>
-                The real work is showing leaders what happens when you stop optimising the old architecture — and start building the new one. When you stop deploying humans into processes designed in the 1990s and start designing for the workforce you&apos;ll actually have: <strong className="text-text-primary">part carbon, part code.</strong>
+                The real work is showing leaders what happens when you stop optimising the old architecture — and start building the new one. When you stop deploying humans into processes designed in the 1990s and start designing for the workforce you&apos;ll actually have: <strong>part carbon, part code.</strong>
               </p>
-              <p className="text-text-primary font-medium">
+              <p>
                 I know what breaks. And I know what builds.
               </p>
             </div>
