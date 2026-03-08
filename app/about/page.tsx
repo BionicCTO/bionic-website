@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { getAllArticles } from '@/lib/articles'
 import AboutClient from './AboutClient'
 
 export const metadata: Metadata = {
@@ -7,5 +8,6 @@ export const metadata: Metadata = {
 }
 
 export default function AboutPage() {
-  return <AboutClient />
+  const articles = getAllArticles().slice(0, 3)
+  return <AboutClient recentArticles={articles} />
 }
