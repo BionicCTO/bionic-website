@@ -6,12 +6,30 @@ export default function NewsletterSignup({ variant = 'default' }: { variant?: 'd
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Connect to Beehiiv API
-    if (email) {
-      setStatus('success')
-      setEmail('')
+    if (!email) return
+
+    setLoading(true)
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      if (res.ok) {
+        setStatus('success')
+        setEmail('')
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -20,6 +38,17 @@ export default function NewsletterSignup({ variant = 'default' }: { variant?: 'd
       <p className={`text-sm font-medium ${variant === 'dark' ? 'text-accent' : 'text-accent'}`}>
         You&apos;re in. Welcome to Bionic.
       </p>
+    )
+  }
+
+  if (status === 'error') {
+    return (
+      <div className="text-center">
+        <p className="text-sm text-red-500 mb-2">Something went wrong. Please try again.</p>
+        <button onClick={() => setStatus('idle')} className="text-sm text-accent underline">
+          Try again
+        </button>
+      </div>
     )
   }
 
@@ -47,7 +76,7 @@ export default function NewsletterSignup({ variant = 'default' }: { variant?: 'd
             : 'bg-text-primary text-bg hover:bg-accent'
         }`}
       >
-        Subscribe
+        {loading ? 'Subscribing...' : 'Subscribe'}
       </button>
     </form>
   )
