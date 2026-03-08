@@ -257,11 +257,8 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
 
           <div className="grid md:grid-cols-3 gap-8">
             {recentArticles.map((article) => {
-              const formattedDate = new Date(article.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              }).toUpperCase()
+              const d = new Date(article.date)
+              const formattedDate = `${String(d.getDate()).padStart(2, '0')} ${d.toLocaleDateString('en-GB', { month: 'long' }).toUpperCase()} ${d.getFullYear()}`
 
               return (
                 <motion.div

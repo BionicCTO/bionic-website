@@ -12,11 +12,8 @@ export default function HomeClient({ articles }: { articles: ArticleMeta[] }) {
       {/* ── Article Listing (Webflow-style vertical feed) ── */}
       <section className="max-w-[48rem] mx-auto px-[5%] pt-8 md:pt-16">
         {articles.map((article, i) => {
-          const formattedDate = new Date(article.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          }).toUpperCase()
+          const d = new Date(article.date)
+          const formattedDate = `${String(d.getDate()).padStart(2, '0')} ${d.toLocaleDateString('en-GB', { month: 'long' }).toUpperCase()} ${d.getFullYear()}`
 
           return (
             <motion.article

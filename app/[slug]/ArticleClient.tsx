@@ -15,11 +15,8 @@ interface ArticleClientProps {
 }
 
 export default function ArticleClient({ meta, content, related }: ArticleClientProps) {
-  const formattedDate = new Date(meta.date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).toUpperCase()
+  const d = new Date(meta.date)
+  const formattedDate = `${String(d.getDate()).padStart(2, '0')} ${d.toLocaleDateString('en-GB', { month: 'long' }).toUpperCase()} ${d.getFullYear()}`
 
   return (
     <>
@@ -177,11 +174,8 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
                 {related.map((article) => {
-                  const articleDate = new Date(article.date).toLocaleDateString('en-GB', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })
+                  const ad = new Date(article.date)
+                  const articleDate = `${String(ad.getDate()).padStart(2, '0')} ${ad.toLocaleDateString('en-GB', { month: 'long' }).toUpperCase()} ${ad.getFullYear()}`
                   return (
                     <div key={article.slug} className="group">
                       {/* Hero image or placeholder */}
