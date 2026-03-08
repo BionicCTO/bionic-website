@@ -25,13 +25,35 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
     <>
       <ReadingProgress />
 
+      {/* ── Hero Image ── */}
+      {meta.heroImage && (
+        <div className="px-[5%]">
+          <div className="max-w-[48rem] mx-auto pt-12 md:pt-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Image
+                src={meta.heroImage}
+                alt={meta.title}
+                width={768}
+                height={432}
+                className="w-full h-auto rounded-lg"
+                priority
+              />
+            </motion.div>
+          </div>
+        </div>
+      )}
+
       {/* ── Article Header (centred, Webflow-style) ── */}
       <header className="px-[5%]">
-        <div className="max-w-[48rem] mx-auto pt-12 pb-8 md:pt-20 md:pb-12">
+        <div className={`max-w-[48rem] mx-auto ${meta.heroImage ? 'pt-8 md:pt-12' : 'pt-12 md:pt-20'} pb-8 md:pb-12`}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: meta.heroImage ? 0.1 : 0 }}
             className="text-center flex flex-col items-center"
           >
             <div className="text-sm uppercase tracking-[0.15em] text-text-muted mb-6">
@@ -162,12 +184,22 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
                   })
                   return (
                     <div key={article.slug} className="group">
-                      {/* Image placeholder */}
+                      {/* Hero image or placeholder */}
                       <Link href={`/${article.slug}`} className="block mb-6">
                         <div className="aspect-[16/9] bg-bg-dark rounded-lg overflow-hidden">
-                          <div className="w-full h-full flex items-center justify-center text-white/20 text-5xl font-editorial select-none">
-                            ✦
-                          </div>
+                          {article.heroImage ? (
+                            <Image
+                              src={article.heroImage}
+                              alt={article.title}
+                              width={400}
+                              height={225}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-white/20 text-5xl font-editorial select-none">
+                              ✦
+                            </div>
+                          )}
                         </div>
                       </Link>
 

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 interface ArticleCardProps {
@@ -10,9 +11,10 @@ interface ArticleCardProps {
   slug: string
   category?: string
   featured?: boolean
+  heroImage?: string
 }
 
-export default function ArticleCard({ title, subtitle, date, slug, category, featured }: ArticleCardProps) {
+export default function ArticleCard({ title, subtitle, date, slug, category, featured, heroImage }: ArticleCardProps) {
   const formattedDate = new Date(date).toLocaleDateString('en-GB', {
     year: 'numeric',
     month: 'long',
@@ -29,11 +31,21 @@ export default function ArticleCard({ title, subtitle, date, slug, category, fea
         <div className={`bg-bg-elevated rounded-xl border border-border-light p-6 md:p-8 transition-all duration-300 hover:shadow-lg hover:border-border ${
           featured ? 'md:flex md:items-center md:gap-10' : ''
         }`}>
-          {/* Illustration placeholder */}
+          {/* Illustration */}
           <div className={`bg-bg-dark rounded-lg flex items-center justify-center mb-5 overflow-hidden ${
             featured ? 'md:mb-0 md:w-1/2 aspect-[16/10]' : 'aspect-[16/9]'
           }`}>
-            <div className="text-bg/20 text-6xl font-editorial select-none">✦</div>
+            {heroImage ? (
+              <Image
+                src={heroImage}
+                alt={title}
+                width={featured ? 600 : 400}
+                height={featured ? 375 : 225}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            ) : (
+              <div className="text-bg/20 text-6xl font-editorial select-none">✦</div>
+            )}
           </div>
 
           <div className={featured ? 'md:w-1/2' : ''}>
