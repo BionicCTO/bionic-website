@@ -10,7 +10,11 @@ html {
 }
 
 body {
-  background-color: #F5F0EB;
+  background-color: #FAF9F4;
+  background-image: url('/images/background-texture.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: #1A1A1A;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -28,7 +32,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F0EB;
+  background: #FAF9F4;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -147,7 +151,7 @@ body {
 
 .prose pre {
   background: #1A1A1A;
-  color: #F5F0EB;
+  color: #FAF9F4;
   padding: 1.5rem;
   border-radius: 8px;
   overflow-x: auto;

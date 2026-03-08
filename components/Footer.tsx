@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import NewsletterSignup from './NewsletterSignup'
 
 export default function Footer() {
@@ -22,7 +23,7 @@ export default function Footer() {
         <div className="max-w-[1100px] mx-auto px-6 md:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <span className="font-black tracking-[0.15em] text-sm uppercase">BIONIC</span>
+              <Image src="/images/bionic-logo-nav.svg" alt="BIONIC" width={80} height={14} />
               <span className="text-text-muted text-sm">· Where leaders learn to build.</span>
             </div>
             <div className="flex items-center gap-6 text-sm text-text-muted">

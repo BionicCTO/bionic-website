@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Navigation() {
@@ -56,11 +57,14 @@ export default function Navigation() {
 
             {/* Center logo */}
             <Link href="/" className="absolute left-1/2 -translate-x-1/2">
-              <span className={`font-black tracking-[0.15em] uppercase transition-all duration-300 ${
-                scrolled ? 'text-xl' : 'text-2xl'
-              }`}>
-                BIONIC
-              </span>
+              <Image
+                src="/images/bionic-logo.svg"
+                alt="BIONIC"
+                width={scrolled ? 120 : 154}
+                height={scrolled ? 52 : 66}
+                className="transition-all duration-300"
+                priority
+              />
             </Link>
 
             {/* Right - Book a Call */}
