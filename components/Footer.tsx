@@ -13,7 +13,7 @@ export default function Footer() {
             <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-16">
               {/* Left: Logo + Built by */}
               <div>
-                <Link href="/" className="inline-block mb-6 -ml-1">
+                <Link href="/" className="inline-block mb-6 -ml-3">
                   <Image src="/images/bionic-logo.svg" alt="BIONIC" width={120} height={50} />
                 </Link>
                 <div className="mb-1 text-base text-text-secondary">
