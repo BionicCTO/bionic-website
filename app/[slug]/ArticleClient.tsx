@@ -2,11 +2,12 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import ReadingProgress from '@/components/ReadingProgress'
-import ArticleCard from '@/components/ArticleCard'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import ScrollReveal from '@/components/ScrollReveal'
 import type { ArticleMeta } from '@/lib/articles'
+
 interface ArticleClientProps {
   meta: ArticleMeta
   content: string
@@ -14,101 +15,187 @@ interface ArticleClientProps {
 }
 
 export default function ArticleClient({ meta, content, related }: ArticleClientProps) {
-  const formattedDate = new Date(meta.date).toLocaleDateString('en-GB', {
+  const formattedDate = new Date(meta.date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  })
+  }).toUpperCase()
 
   return (
     <>
       <ReadingProgress />
 
-      <article className="max-w-[720px] mx-auto px-6 md:px-8 pt-8 md:pt-16 pb-12">
-        {/* Meta */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs font-bold tracking-wider text-accent uppercase">{meta.category}</span>
-            <span className="text-border">·</span>
-            <time className="text-xs text-text-muted">{formattedDate}</time>
-            <span className="text-border">·</span>
-            <span className="text-xs text-text-muted">{meta.readingTime}</span>
-          </div>
-
-          <h1 className="font-editorial text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight mb-4">
-            {meta.title}
-          </h1>
-
-          {meta.subtitle && (
-            <p className="text-text-secondary text-lg md:text-xl leading-relaxed">
-              {meta.subtitle}
-            </p>
-          )}
-
-          <div className="flex items-center gap-3 mt-6 pt-6 border-t border-border-light">
-            <div className="w-9 h-9 rounded-full bg-bg-dark flex items-center justify-center text-bg text-xs font-bold">
-              AP
+      {/* ── Article Header (centred, Webflow-style) ── */}
+      <header className="px-[5%]">
+        <div className="max-w-[48rem] mx-auto pt-12 pb-8 md:pt-20 md:pb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center flex flex-col items-center"
+          >
+            <div className="text-sm uppercase tracking-[0.15em] text-text-muted mb-6">
+              {formattedDate}
             </div>
-            <div>
-              <Link href="/about" className="text-sm font-medium hover:text-accent transition-colors">
+
+            <h1 className="font-editorial text-[2.5rem] md:text-[3.5rem] font-semibold leading-[1.2] tracking-tight mb-4">
+              {meta.title}
+            </h1>
+
+            <div className="h-2" />
+
+            <div className="flex items-center gap-2 text-text-muted text-sm">
+              <span>written by</span>
+              <Link href="/about" className="text-text-primary hover:text-accent transition-colors">
                 {meta.author}
               </Link>
-              <p className="text-xs text-text-muted">Bionic</p>
             </div>
-          </div>
-        </motion.div>
 
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="prose"
-          dangerouslySetInnerHTML={{ __html: simpleMarkdown(content) }}
-        />
+            <div className="h-8" />
 
-        {/* End CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-16 pt-8 border-t border-border"
-        >
-          <div className="bg-bg-card rounded-xl border border-border-light p-8 text-center">
-            <h3 className="font-editorial text-xl font-bold mb-2">Want to explore this for your organisation?</h3>
-            <p className="text-text-muted text-sm mb-5">30 minutes. No pitch. Just clarity.</p>
-            <Link
-              href="/contact"
-              className="inline-flex px-6 py-3 bg-text-primary text-bg rounded-full text-sm font-medium hover:bg-accent transition-colors"
-            >
-              Book a Call
-            </Link>
-          </div>
-        </motion.div>
-
-        {/* Newsletter */}
-        <div className="mt-12 pt-8 border-t border-border text-center">
-          <p className="text-sm text-text-secondary mb-4">Get field notes like this in your inbox.</p>
-          <NewsletterSignup />
+            {meta.subtitle && (
+              <p className="text-text-secondary text-lg md:text-[1.125rem] leading-relaxed max-w-[40rem]">
+                {meta.subtitle}
+              </p>
+            )}
+          </motion.div>
         </div>
-      </article>
+      </header>
 
-      {/* Related articles */}
-      {related.length > 0 && (
-        <section className="max-w-[1100px] mx-auto px-6 md:px-8 py-12 border-t border-border">
-          <ScrollReveal>
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-text-muted mb-6">Keep reading</p>
-            <div className="grid md:grid-cols-2 gap-6">
-              {related.map((article) => (
-                <ArticleCard key={article.slug} {...article} />
-              ))}
+      {/* ── Article Content ── */}
+      <section className="px-[5%]">
+        <div className="max-w-[80rem] mx-auto py-12 md:py-[7rem]">
+          <div className="max-w-[48rem] mx-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="prose"
+              dangerouslySetInnerHTML={{ __html: simpleMarkdown(content) }}
+            />
+
+            {/* Divider */}
+            <div className="w-full h-px bg-[#d1cdca] mt-12 mb-12" />
+
+            {/* Bottom byline + next article */}
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+              <div className="flex items-center gap-2 text-text-muted text-sm">
+                <span>written by</span>
+                <Link href="/about" className="text-text-primary hover:text-accent transition-colors">
+                  {meta.author}
+                </Link>
+              </div>
+
+              {related.length > 0 && (
+                <div className="text-right">
+                  <div className="text-text-muted text-sm mb-1">Read more</div>
+                  <Link
+                    href={`/${related[0].slug}`}
+                    className="text-text-primary hover:text-accent transition-colors text-sm font-medium"
+                  >
+                    {related[0].title}
+                  </Link>
+                </div>
+              )}
             </div>
-          </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Newsletter Section (dark, Webflow "Join the uprising") ── */}
+      <section className="relative overflow-hidden rounded-t-2xl">
+        <div className="relative z-10 px-[5%]">
+          <div className="max-w-[48rem] mx-auto py-16 md:py-20">
+            <div className="text-center">
+              <div className="text-white/60 text-sm mb-4">Dispatches</div>
+              <h2 className="font-editorial text-[2.25rem] md:text-[3rem] font-semibold leading-[1.2] text-white mb-6">
+                Join the uprising
+              </h2>
+              <p className="text-white/60 text-base mb-8">
+                Field notes from the front lines. Weekly.
+              </p>
+              <div className="max-w-[30rem] mx-auto">
+                <NewsletterSignup variant="dark" />
+                <p className="text-white/40 text-xs mt-4">
+                  By clicking Sign Up you&apos;re confirming that you agree with our{' '}
+                  <Link href="/terms" className="text-white/60 underline">
+                    Terms and Conditions
+                  </Link>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Background image */}
+        <Image
+          src="/images/Header.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority={false}
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/70" />
+      </section>
+
+      {/* ── Other Meditations (related articles) ── */}
+      {related.length > 0 && (
+        <section className="px-[5%]">
+          <div className="max-w-[80rem] mx-auto py-16 md:py-[7rem]">
+            <ScrollReveal>
+              <div className="text-center mb-6">
+                <h2 className="font-editorial text-[1.75rem] md:text-[2rem] font-semibold leading-[1.2]">
+                  Other Meditations
+                </h2>
+                <div className="h-6" />
+                <p className="text-text-secondary text-base">Read articles related</p>
+              </div>
+
+              <div className="h-16 md:h-20" />
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+                {related.map((article) => {
+                  const articleDate = new Date(article.date).toLocaleDateString('en-GB', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })
+                  return (
+                    <div key={article.slug} className="group">
+                      {/* Image placeholder */}
+                      <Link href={`/${article.slug}`} className="block mb-6">
+                        <div className="aspect-[16/9] bg-bg-dark rounded-lg overflow-hidden">
+                          <div className="w-full h-full flex items-center justify-center text-white/20 text-5xl font-editorial select-none">
+                            ✦
+                          </div>
+                        </div>
+                      </Link>
+
+                      <div className="text-sm text-text-muted mb-2">{articleDate}</div>
+                      <div className="h-2" />
+
+                      <Link href={`/${article.slug}`} className="block mb-2">
+                        <h3 className="font-editorial text-[1.25rem] md:text-[1.5rem] font-semibold leading-[1.4] group-hover:text-accent transition-colors">
+                          {article.title}
+                        </h3>
+                      </Link>
+
+                      <p className="text-text-secondary text-base leading-relaxed line-clamp-3">
+                        {article.subtitle}
+                      </p>
+
+                      <div className="flex items-center gap-2 text-text-muted text-sm mt-4">
+                        <span>written by</span>
+                        <Link href="/about" className="text-text-primary hover:text-accent transition-colors">
+                          {article.author}
+                        </Link>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </ScrollReveal>
+          </div>
         </section>
       )}
     </>

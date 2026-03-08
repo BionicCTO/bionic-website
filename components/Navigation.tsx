@@ -31,25 +31,25 @@ export default function Navigation() {
           <div className={`flex items-center justify-between transition-all duration-300 ${
             scrolled ? 'h-16' : 'h-20'
           }`}>
-            {/* Left nav links */}
-            <div className="hidden md:flex items-center gap-8">
+            {/* Left nav links — Webflow style with separator slashes and hover bg */}
+            <div className="hidden md:flex items-center gap-1 -ml-4">
               <Link
                 href="/"
-                className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+                className="text-sm px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
                 Wild Thoughts
               </Link>
-              <span className="text-border">/</span>
+              <span className="text-text-muted">/</span>
               <Link
                 href="/about"
-                className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+                className="text-sm px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
                 About
               </Link>
-              <span className="text-border">/</span>
+              <span className="text-text-muted">/</span>
               <Link
                 href="/contact"
-                className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+                className="text-sm px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
                 Contact
               </Link>
@@ -67,13 +67,13 @@ export default function Navigation() {
               />
             </Link>
 
-            {/* Right - Book a Call */}
+            {/* Right - Search link (matches Webflow) */}
             <div className="hidden md:flex items-center ml-auto">
               <Link
                 href="/contact"
-                className="text-sm font-medium px-5 py-2 bg-text-primary text-bg rounded-full hover:bg-accent transition-colors duration-200"
+                className="text-sm px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
-                Book a Call
+                Contact
               </Link>
             </div>
 
@@ -125,7 +125,7 @@ export default function Navigation() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="text-lg font-medium px-6 py-3 bg-text-primary text-bg rounded-full text-center"
+                className="text-lg font-medium px-6 py-3 bg-text-primary text-bg rounded-lg text-center"
               >
                 Book a Call
               </Link>

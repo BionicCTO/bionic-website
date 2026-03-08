@@ -28,11 +28,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans bg-bg text-text-primary min-h-screen">
-        <Navigation />
-        <main className="pt-20">
-          {children}
-        </main>
-        <Footer />
+        {/* Background texture — fixed, 40% opacity like Webflow */}
+        <div className="background-texture" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/background-texture.jpg" alt="" />
+        </div>
+
+        <div className="page-wrapper">
+          <Navigation />
+          <main className="pt-20">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   )

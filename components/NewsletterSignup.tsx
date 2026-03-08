@@ -5,7 +5,6 @@ import { useState } from 'react'
 export default function NewsletterSignup({ variant = 'default' }: { variant?: 'default' | 'inline' | 'dark' }) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
-
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -33,10 +32,12 @@ export default function NewsletterSignup({ variant = 'default' }: { variant?: 'd
     }
   }
 
+  const isDark = variant === 'dark'
+
   if (status === 'success') {
     return (
-      <p className={`text-sm font-medium ${variant === 'dark' ? 'text-accent' : 'text-accent'}`}>
-        You&apos;re in. Welcome to Bionic.
+      <p className={`text-sm font-medium ${isDark ? 'text-white' : 'text-accent'}`}>
+        Thank you! Your submission has been received!
       </p>
     )
   }
@@ -44,7 +45,9 @@ export default function NewsletterSignup({ variant = 'default' }: { variant?: 'd
   if (status === 'error') {
     return (
       <div className="text-center">
-        <p className="text-sm text-red-500 mb-2">Something went wrong. Please try again.</p>
+        <p className={`text-sm mb-2 ${isDark ? 'text-white' : 'text-red-500'}`}>
+          Oops! Something went wrong while submitting the form.
+        </p>
         <button onClick={() => setStatus('idle')} className="text-sm text-accent underline">
           Try again
         </button>
@@ -52,31 +55,33 @@ export default function NewsletterSignup({ variant = 'default' }: { variant?: 'd
     )
   }
 
-  const isDark = variant === 'dark'
-
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md mx-auto">
+    <form
+      onSubmit={handleSubmit}
+      className={`w-full ${isDark ? 'grid grid-cols-1 gap-4' : 'grid grid-cols-[1fr_max-content] gap-4'}`}
+    >
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="your@email.com"
+        placeholder="Enter your email"
         required
-        className={`flex-1 px-4 py-3 rounded-full text-sm border outline-none transition-all focus:ring-2 focus:ring-accent/30 ${
+        className={`w-full px-3 py-2 rounded-lg text-base border outline-none transition-all min-h-[2.75rem] ${
           isDark
-            ? 'bg-white/10 border-white/20 text-white placeholder:text-white/40'
-            : 'bg-bg-elevated border-border text-text-primary placeholder:text-text-muted'
+            ? 'bg-white/15 border-[#b4b0ac] text-white placeholder:text-white/40 focus:border-[#f3f3f2] focus:shadow-[0_0_0_4px_rgba(0,0,0,0.1)]'
+            : 'bg-white border-[#b4b0ac] text-text-primary placeholder:text-black/50 hover:bg-[#f3f3f2] focus:bg-[#f3f3f2] focus:border-black focus:shadow-[0_0_0_4px_rgba(0,0,0,0.1)]'
         }`}
       />
       <button
         type="submit"
-        className={`px-6 py-3 rounded-full text-sm font-medium transition-all ${
+        disabled={loading}
+        className={`px-6 py-2 rounded-lg text-sm font-medium transition-all min-h-[2.75rem] border ${
           isDark
-            ? 'bg-accent text-white hover:bg-accent-dark'
-            : 'bg-text-primary text-bg hover:bg-accent'
+            ? 'bg-white text-black border-white hover:bg-[#f3f3f2] w-full'
+            : 'bg-black text-white border-black hover:bg-[#242121]'
         }`}
       >
-        {loading ? 'Subscribing...' : 'Subscribe'}
+        {loading ? 'Please wait...' : 'Sign up'}
       </button>
     </form>
   )
