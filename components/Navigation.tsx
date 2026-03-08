@@ -48,10 +48,10 @@ export default function Navigation() {
               </Link>
               <span className="text-text-muted">/</span>
               <Link
-                href="/contact"
+                href="/subscribe"
                 className="text-sm px-4 py-2 rounded-lg text-text-primary hover:bg-black/5 transition-colors duration-300"
               >
-                Contact
+                Subscribe
               </Link>
             </div>
 
@@ -118,8 +118,8 @@ export default function Navigation() {
               <Link href="/about" onClick={() => setMobileOpen(false)} className="text-2xl font-editorial">
                 About
               </Link>
-              <Link href="/contact" onClick={() => setMobileOpen(false)} className="text-2xl font-editorial">
-                Contact
+              <Link href="/subscribe" onClick={() => setMobileOpen(false)} className="text-2xl font-editorial">
+                Subscribe
               </Link>
               <hr className="border-border my-4" />
               <Link
