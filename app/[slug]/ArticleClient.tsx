@@ -179,13 +179,13 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
                     {/* Hero image */}
                     {article.heroImage && (
                       <Link href={`/${article.slug}`} className="block mb-4">
-                        <div className="aspect-[4/3] overflow-hidden rounded-lg">
+                        <div className="aspect-[4/3] overflow-hidden rounded-lg flex items-center justify-center p-6">
                           <Image
                             src={article.heroImage}
                             alt={article.title}
                             width={400}
                             height={300}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>
                       </Link>
