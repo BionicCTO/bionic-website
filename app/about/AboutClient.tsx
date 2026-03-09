@@ -252,7 +252,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-3">
               Read my thoughts
             </h2>
-            <p className="text-text-primary text-base">Read articles related.</p>
+            <p className="text-text-primary text-base">More from the field.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
