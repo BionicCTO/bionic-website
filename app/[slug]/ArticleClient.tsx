@@ -56,7 +56,7 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
             className="text-center flex flex-col items-center"
           >
             <div className="text-sm uppercase tracking-[0.15em] text-text-muted mb-6">
-              {formattedDate}
+              {formattedDate} · {meta.readingTime}
             </div>
 
             <h1 className="font-editorial text-[2.5rem] md:text-[3.5rem] font-semibold leading-[1.2] tracking-tight mb-4">

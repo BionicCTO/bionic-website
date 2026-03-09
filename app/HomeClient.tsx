@@ -38,9 +38,9 @@ export default function HomeClient({ articles }: { articles: ArticleMeta[] }) {
                 </Link>
               )}
 
-              {/* Date */}
+              {/* Date + reading time */}
               <div className="text-sm text-text-muted mb-3">
-                {formattedDate}
+                {formattedDate} · {article.readingTime}
               </div>
 
               {/* Title */}
