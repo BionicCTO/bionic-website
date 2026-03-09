@@ -48,7 +48,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             className="flex justify-center"
           >
             <Image
-              src="/images/blog-image-1.png"
+              src="/images/image4.png"
               alt="Illustration"
               width={500}
               height={500}
