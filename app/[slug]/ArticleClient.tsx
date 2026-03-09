@@ -6,6 +6,7 @@ import Image from 'next/image'
 import ReadingProgress from '@/components/ReadingProgress'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import ScrollReveal from '@/components/ScrollReveal'
+import VideoExplainer from '@/components/VideoExplainer'
 import type { ArticleMeta } from '@/lib/articles'
 
 interface ArticleClientProps {
@@ -82,6 +83,15 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
           </motion.div>
         </div>
       </header>
+
+      {/* ── Video Explainer ── */}
+      {meta.videoUrl && (
+        <div className="px-[5%]">
+          <div className="max-w-[48rem] mx-auto">
+            <VideoExplainer videoUrl={meta.videoUrl} title={meta.title} />
+          </div>
+        </div>
+      )}
 
       {/* ── Article Content ── */}
       <section className="px-[5%]">

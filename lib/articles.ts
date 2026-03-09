@@ -15,6 +15,7 @@ export interface ArticleMeta {
   readingTime: string
   featured?: boolean
   heroImage?: string
+  videoUrl?: string
 }
 
 export function getArticleSlugs(): string[] {
@@ -40,6 +41,7 @@ export function getArticleMeta(slug: string): ArticleMeta {
     readingTime: stats.text,
     featured: data.featured || false,
     heroImage: data.heroImage || undefined,
+    videoUrl: data.videoUrl || undefined,
   }
 }
 
@@ -66,6 +68,7 @@ export function getArticleContent(slug: string): { meta: ArticleMeta; content: s
       readingTime: stats.text,
       featured: data.featured || false,
       heroImage: data.heroImage || undefined,
+      videoUrl: data.videoUrl || undefined,
     },
     content,
   }
