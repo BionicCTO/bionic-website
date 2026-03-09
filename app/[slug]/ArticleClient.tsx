@@ -157,70 +157,60 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
         <div className="absolute inset-0 bg-black/70" />
       </section>
 
-      {/* ── Other Meditations (related articles) ── */}
+      {/* ── Read my thoughts (related articles) ── */}
       {related.length > 0 && (
-        <section className="px-[5%]">
-          <div className="max-w-[80rem] mx-auto py-16 md:py-[7rem]">
-            <ScrollReveal>
-              <div className="text-center mb-6">
-                <h2 className="font-editorial text-[1.75rem] md:text-[2rem] font-semibold leading-[1.2]">
-                  Other Meditations
-                </h2>
-                <div className="h-6" />
-                <p className="text-text-secondary text-base">Read articles related</p>
-              </div>
+        <section className="max-w-[80rem] mx-auto px-[5%] py-16 md:py-24">
+          <div className="text-center mb-12">
+            <h2 className="font-editorial text-[2rem] md:text-[2.75rem] font-semibold leading-[1.2] mb-3">
+              Read my thoughts
+            </h2>
+            <p className="text-text-primary text-base">Read articles related.</p>
+          </div>
 
-              <div className="h-16 md:h-20" />
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
-                {related.map((article) => {
-                  const ad = new Date(article.date)
-                  const articleDate = `${String(ad.getDate()).padStart(2, '0')} ${ad.toLocaleDateString('en-GB', { month: 'long' }).toUpperCase()} ${ad.getFullYear()}`
-                  return (
-                    <div key={article.slug} className="group">
-                      {/* Hero image or placeholder */}
-                      <Link href={`/${article.slug}`} className="block mb-6">
-                        <div className="aspect-[16/9] bg-bg-dark rounded-lg overflow-hidden">
-                          {article.heroImage ? (
-                            <Image
-                              src={article.heroImage}
-                              alt={article.title}
-                              width={400}
-                              height={225}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center text-white/20 text-5xl font-editorial select-none">
-                              ✦
-                            </div>
-                          )}
+          <div className="grid md:grid-cols-3 gap-8">
+            {related.map((article) => {
+              const ad = new Date(article.date)
+              const articleDate = `${String(ad.getDate()).padStart(2, '0')} ${ad.toLocaleDateString('en-GB', { month: 'long' }).toUpperCase()} ${ad.getFullYear()}`
+              return (
+                <ScrollReveal key={article.slug}>
+                  <div className="group">
+                    {/* Hero image */}
+                    {article.heroImage && (
+                      <Link href={`/${article.slug}`} className="block mb-4">
+                        <div className="aspect-[4/3] overflow-hidden rounded-lg">
+                          <Image
+                            src={article.heroImage}
+                            alt={article.title}
+                            width={400}
+                            height={300}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
                         </div>
                       </Link>
+                    )}
 
-                      <div className="text-sm text-text-muted mb-2">{articleDate}</div>
-                      <div className="h-2" />
+                    <div className="text-sm text-text-muted mb-2">{articleDate}</div>
 
-                      <Link href={`/${article.slug}`} className="block mb-2">
-                        <h3 className="font-editorial text-[1.25rem] md:text-[1.5rem] font-semibold leading-[1.4] group-hover:text-accent transition-colors">
-                          {article.title}
-                        </h3>
+                    <Link href={`/${article.slug}`} className="block mb-1">
+                      <h3 className="font-editorial text-[1.25rem] md:text-[1.4rem] font-semibold leading-[1.3] group-hover:opacity-70 transition-opacity">
+                        {article.title}
+                      </h3>
+                    </Link>
+
+                    <div className="flex items-center gap-2 text-text-muted text-sm mb-2">
+                      <span>written by</span>
+                      <Link href="/about" className="text-text-primary hover:opacity-70 transition-opacity">
+                        {article.author}
                       </Link>
-
-                      <p className="text-text-secondary text-base leading-relaxed line-clamp-3">
-                        {article.subtitle}
-                      </p>
-
-                      <div className="flex items-center gap-2 text-text-muted text-sm mt-4">
-                        <span>written by</span>
-                        <Link href="/about" className="text-text-primary hover:text-accent transition-colors">
-                          {article.author}
-                        </Link>
-                      </div>
                     </div>
-                  )
-                })}
-              </div>
-            </ScrollReveal>
+
+                    <p className="text-text-primary text-sm leading-relaxed line-clamp-2">
+                      {article.subtitle}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              )
+            })}
           </div>
         </section>
       )}
