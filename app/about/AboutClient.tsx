@@ -169,7 +169,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             className="flex justify-center order-2 md:order-1"
           >
             <Image
-              src="/images/clean_transparent_no_checkerboard.png"
+              src="/images/server_landscape_1536x1024.png"
               alt="Server with trailing cable — every business is now a technology business"
               width={500}
               height={500}
