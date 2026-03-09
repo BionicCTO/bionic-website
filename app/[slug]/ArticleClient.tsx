@@ -31,7 +31,7 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="aspect-[16/9] bg-white rounded-lg overflow-hidden flex items-center justify-center">
+              <div className="aspect-[16/9] overflow-hidden flex items-center justify-center">
                 <Image
                   src={meta.heroImage}
                   alt={meta.title}
