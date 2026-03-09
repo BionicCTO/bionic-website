@@ -31,14 +31,16 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Image
-                src={meta.heroImage}
-                alt={meta.title}
-                width={768}
-                height={432}
-                className="w-full h-auto rounded-lg"
-                priority
-              />
+              <div className="aspect-[16/9] bg-white rounded-lg overflow-hidden flex items-center justify-center">
+                <Image
+                  src={meta.heroImage}
+                  alt={meta.title}
+                  width={768}
+                  height={432}
+                  className="w-full h-full object-contain"
+                  priority
+                />
+              </div>
             </motion.div>
           </div>
         </div>
