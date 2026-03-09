@@ -71,7 +71,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
           >
             <Image
               src="/images/blog-image-2.png"
-              alt="Illustration"
+              alt="Hand holding a flower — the practice of building what comes next"
               width={500}
               height={500}
               className="w-full max-w-[500px] h-auto"
@@ -148,7 +148,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
           >
             <Image
               src="/images/blog-image-3.png"
-              alt="Illustration"
+              alt="Spider-like creature — navigating complexity at the frontier"
               width={500}
               height={500}
               className="w-full max-w-[500px] h-auto"
@@ -170,7 +170,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
           >
             <Image
               src="/images/clean_transparent_no_checkerboard.png"
-              alt="Illustration"
+              alt="Server with trailing cable — every business is now a technology business"
               width={500}
               height={500}
               className="w-full max-w-[500px] h-auto"

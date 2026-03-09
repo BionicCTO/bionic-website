@@ -1,11 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
+
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
 
 export default function NewsletterSignup({ variant = 'default' }: { variant?: 'default' | 'inline' | 'dark' }) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [loading, setLoading] = useState(false)
+  const emailValid = useMemo(() => isValidEmail(email), [email])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -77,8 +82,8 @@ export default function NewsletterSignup({ variant = 'default' }: { variant?: 'd
         disabled={loading}
         className={`px-6 py-2 rounded-lg text-sm font-medium transition-all min-h-[2.75rem] border ${
           isDark
-            ? 'bg-white text-black border-white hover:bg-[#f3f3f2]'
-            : 'bg-black text-white border-black hover:bg-[#242121]'
+            ? `bg-white text-black border-white ${emailValid ? 'hover:bg-accent hover:border-accent hover:text-white' : 'hover:bg-[#f3f3f2]'}`
+            : `bg-black text-white border-black ${emailValid ? 'hover:bg-accent hover:border-accent' : 'hover:bg-[#242121]'}`
         }`}
       >
         {loading ? 'Please wait...' : 'Sign up'}

@@ -29,5 +29,40 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     .filter((a) => a.slug !== params.slug)
     .slice(0, 2)
 
-  return <ArticleClient meta={meta} content={content} related={related} />
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: meta.title,
+    description: meta.subtitle,
+    datePublished: meta.date,
+    author: {
+      '@type': 'Person',
+      name: meta.author,
+      url: 'https://bionic.global/about',
+      jobTitle: 'AI & Enterprise Strategy Advisor',
+      sameAs: ['https://www.linkedin.com/in/amitpatel911'],
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Bionic',
+      url: 'https://bionic.global',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://bionic.global/${params.slug}`,
+    },
+    ...(meta.heroImage && {
+      image: `https://bionic.global${meta.heroImage}`,
+    }),
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ArticleClient meta={meta} content={content} related={related} />
+    </>
+  )
 }
