@@ -4,16 +4,21 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bionic.global'),
   title: {
     default: 'Bionic — Where leaders learn to build',
     template: '%s | Bionic',
   },
   description: 'Field notes on AI, leadership, and building what comes next. By Amit Patel.',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Bionic — Where leaders learn to build',
     description: 'Field notes on AI, leadership, and building what comes next.',
     type: 'website',
     locale: 'en_GB',
+    siteName: 'Bionic',
   },
   twitter: {
     card: 'summary_large_image',
