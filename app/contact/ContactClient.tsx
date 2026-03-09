@@ -27,7 +27,7 @@ export default function ContactClient() {
 
           <div className="mt-10">
             <a
-              href="https://cal.com"
+              href="https://cal.com/amit-patel/30min-bionic"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex px-8 py-4 bg-text-primary text-bg rounded-lg text-base font-medium hover:bg-accent transition-colors"
