@@ -48,8 +48,8 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             className="flex justify-center"
           >
             <Image
-              src="/images/clean_transparent_no_checkerboard.png"
-              alt="Illustration"
+              src="/images/blueprint.png"
+              alt="Blueprint being torn — the old structure doesn't work anymore"
               width={500}
               height={500}
               className="w-full max-w-[500px] h-auto"
