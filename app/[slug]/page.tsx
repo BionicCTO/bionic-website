@@ -40,7 +40,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       name: meta.author,
       url: 'https://bionic.global/about',
       jobTitle: 'AI & Enterprise Strategy Advisor',
-      sameAs: ['https://www.linkedin.com/in/amitpatel911'],
+      sameAs: ['https://www.linkedin.com/in/amitpatel911', 'https://x.com/amitpatel911'],
     },
     publisher: {
       '@type': 'Organization',

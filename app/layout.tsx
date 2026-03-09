@@ -53,7 +53,7 @@ export default function RootLayout({
                 name: 'Amit Patel',
                 url: 'https://bionic.global/about',
                 jobTitle: 'AI & Enterprise Strategy Advisor',
-                sameAs: ['https://www.linkedin.com/in/amitpatel911'],
+                sameAs: ['https://www.linkedin.com/in/amitpatel911', 'https://x.com/amitpatel911'],
                 worksFor: { '@type': 'Organization', name: 'Bionic', url: 'https://bionic.global' },
               },
             ]),
