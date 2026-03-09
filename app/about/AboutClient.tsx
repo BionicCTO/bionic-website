@@ -48,7 +48,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             className="flex justify-center"
           >
             <Image
-              src="/images/image4.png"
+              src="/images/clean_transparent_no_checkerboard.png"
               alt="Illustration"
               width={500}
               height={500}
@@ -169,7 +169,7 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
             className="flex justify-center order-2 md:order-1"
           >
             <Image
-              src="/images/image4.png"
+              src="/images/clean_transparent_no_checkerboard.png"
               alt="Illustration"
               width={500}
               height={500}
