@@ -26,13 +26,13 @@ export default function HomeClient({ articles }: { articles: ArticleMeta[] }) {
               {/* Hero image */}
               {article.heroImage && (
                 <Link href={`/${article.slug}`} className="group/img block mb-6">
-                  <div className="aspect-[16/9] overflow-hidden flex items-center justify-center">
+                  <div className="aspect-[16/9] overflow-hidden flex items-center justify-center p-10 md:p-16">
                     <Image
                       src={article.heroImage}
                       alt={article.title}
                       width={768}
                       height={432}
-                      className="w-full h-full object-contain transition-opacity duration-300 group-hover/img:opacity-80"
+                      className="max-w-full max-h-full object-contain transition-opacity duration-300 group-hover/img:opacity-80"
                     />
                   </div>
                 </Link>
