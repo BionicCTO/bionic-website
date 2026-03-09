@@ -26,7 +26,7 @@ export default function HomeClient({ articles }: { articles: ArticleMeta[] }) {
               {/* Hero image */}
               {article.heroImage && (
                 <Link href={`/${article.slug}`} className="group/img block mb-6">
-                  <div className="aspect-[16/9] overflow-hidden flex items-center justify-center p-10 md:p-16">
+                  <div className="aspect-[4/3] overflow-hidden flex items-center justify-center p-4 md:p-8">
                     <Image
                       src={article.heroImage}
                       alt={article.title}
