@@ -117,7 +117,7 @@ export default function Navigation() {
                 onClick={() => setMobileOpen(false)}
                 className="text-lg font-medium px-6 py-3 bg-text-primary text-bg rounded-lg text-center"
               >
-                Book a Call
+                Contact
               </Link>
             </div>
           </motion.div>
