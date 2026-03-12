@@ -102,6 +102,11 @@ export default function AboutClient({ recentArticles }: { recentArticles: Articl
               <p>
                 I know what breaks. And I know what builds.
               </p>
+              <p className="mt-2">
+                <Link href="/the-words-came-back" className="text-accent hover:underline text-base">
+                  Read the full story &rarr;
+                </Link>
+              </p>
             </div>
           </motion.div>
         </div>
