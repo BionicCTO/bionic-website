@@ -33,9 +33,13 @@ export default function PrivacyPolicyPage() {
             third parties.
           </p>
           <p className="mt-4">
-            <strong>Analytics.</strong> We may use privacy-friendly, cookie-free analytics to
-            understand which articles are read and where traffic comes from. No personal data is
-            collected or shared with advertisers.
+            <strong>Analytics.</strong> We use{' '}
+            <a href="https://plausible.io" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+              Plausible Analytics
+            </a>
+            , a privacy-friendly, cookie-free analytics tool, to understand which articles are read
+            and where traffic comes from. Plausible does not collect personal data, use cookies or
+            track individuals across websites. No data is shared with advertisers.
           </p>
           <p className="mt-4">
             <strong>Booking.</strong> If you book a call via Cal.com, your name and email are
@@ -72,6 +76,7 @@ export default function PrivacyPolicyPage() {
           <p>This site uses the following third-party services:</p>
           <ul className="list-disc pl-6 mt-2 space-y-1">
             <li><strong>Vercel</strong> — hosting and content delivery</li>
+            <li><strong>Plausible Analytics</strong> — privacy-friendly website analytics</li>
             <li><strong>Beehiiv</strong> — newsletter management</li>
             <li><strong>Cal.com</strong> — appointment scheduling</li>
           </ul>
