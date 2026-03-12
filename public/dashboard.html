@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bionic — Content Performance Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+<style>
+  :root {
+    --bg: #FAF9F4;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5C5650;
+    --text-muted: #9B9389;
+    --accent: #E8705A;
+    --accent-light: #F5C4BA;
+    --border: #E8E4DE;
+    --green: #4CAF50;
+    --amber: #FF9800;
+    --red: #E53935;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  .dashboard {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  header p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .last-updated {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 12px;
+  }
+
+  /* KPI row */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .kpi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .kpi-card .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .kpi-card .value {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .kpi-card .change {
+    font-size: 13px;
+    margin-top: 4px;
+  }
+
+  .change.up { color: var(--green); }
+  .change.down { color: var(--red); }
+  .change.flat { color: var(--text-muted); }
+
+  /* Charts row */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .charts-grid { grid-template-columns: 1fr; }
+  }
+
+  .chart-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .chart-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  /* Article scorecard table */
+  .scorecard {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 32px;
+    overflow-x: auto;
+  }
+
+  .scorecard h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .article-title {
+    font-weight: 500;
+    max-width: 240px;
+  }
+
+  .score-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .score-high { background: #E8F5E9; color: #2E7D32; }
+  .score-med { background: #FFF3E0; color: #E65100; }
+  .score-low { background: #FFEBEE; color: #C62828; }
+
+  .bar-container {
+    width: 80px;
+    height: 6px;
+    background: #f0ece7;
+    border-radius: 3px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--accent);
+  }
+
+  /* Insights panel */
+  .insights {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+
+  .insights h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .insight-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .insight-item:last-child { border-bottom: none; }
+
+  .insight-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .insight-icon.grow { background: #E8F5E9; }
+  .insight-icon.watch { background: #FFF3E0; }
+  .insight-icon.act { background: #FFEBEE; }
+
+  .insight-text { font-size: 14px; }
+  .insight-text strong { font-weight: 600; }
+
+  /* Input form */
+  .input-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+
+  .input-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .input-section > p {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(5, 1fr);
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .form-grid label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .form-grid input, .form-grid select {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    background: var(--bg);
+    width: 100%;
+  }
+
+  .form-grid input:focus, .form-grid select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--text-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+
+  .btn:hover { background: #333; }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--bg);
+  }
+
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<div class="dashboard" id="app">
+  <header>
+    <div>
+      <h1>BIONIC — Content Performance</h1>
+      <p>Track, learn, iterate. Every article scored across website + LinkedIn.</p>
+    </div>
+    <div class="last-updated" id="lastUpdated">Last updated: —</div>
+  </header>
+
+  <!-- KPI summary -->
+  <div class="kpi-grid" id="kpiGrid"></div>
+
+  <!-- Charts -->
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h3>Article Performance by Channel</h3>
+      <canvas id="channelChart" height="220"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Engagement Trend (Weekly)</h3>
+      <canvas id="trendChart" height="220"></canvas>
+    </div>
+  </div>
+
+  <!-- Article scorecards -->
+  <div class="scorecard">
+    <h3>Article Scorecards</h3>
+    <table id="scorecardTable">
+      <thead>
+        <tr>
+          <th>Article</th>
+          <th>Website Views</th>
+          <th>LI Impressions</th>
+          <th>LI Reactions</th>
+          <th>LI Comments</th>
+          <th>Subscribers</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody id="scorecardBody"></tbody>
+    </table>
+  </div>
+
+  <!-- AI-generated insights -->
+  <div class="insights">
+    <h3>Insights & Recommendations</h3>
+    <div id="insightsPanel"></div>
+  </div>
+
+  <!-- Data input form -->
+  <div class="input-section">
+    <h3>Update Metrics</h3>
+    <p>Paste your weekly numbers here. LinkedIn stats are on each post → View analytics.</p>
+
+    <div id="inputForms"></div>
+
+    <div style="display: flex; gap: 8px; margin-top: 16px;">
+      <button class="btn" onclick="saveData()">Save & Refresh</button>
+      <button class="btn btn-secondary" onclick="exportData()">Export CSV</button>
+      <button class="btn btn-secondary" onclick="clearData()">Reset All</button>
+    </div>
+    <p class="note">Data is saved to your browser's memory for this session. Export CSV to keep a permanent record.</p>
+  </div>
+</div>
+
+<script>
+// ─── Article definitions (auto-populated from site) ───
+const ARTICLES = [
+  {
+    slug: 'every-business-is-now-a-data-and-tech-company',
+    title: 'Every Business Is Now a Data and Tech Company',
+    date: '2026-02-14',
+    category: 'BUILD',
+    readingTime: '13 min',
+    hasVideo: true,
+  },
+  {
+    slug: 'your-customers-are-already-gone',
+    title: 'Your Customers Are Already Gone',
+    date: '2026-02-03',
+    category: 'BUILD',
+    readingTime: '15 min',
+    hasVideo: false,
+  },
+  {
+    slug: 'waiting-is-the-most-expensive-strategy',
+    title: 'Waiting Is the Most Expensive Strategy',
+    date: '2026-01-20',
+    category: 'BUILD',
+    readingTime: '10 min',
+    hasVideo: false,
+  },
+  {
+    slug: 'build-the-cannibal-before-it-eats-you',
+    title: 'Build the Cannibal Before It Eats You',
+    date: '2026-01-06',
+    category: 'BUILD',
+    readingTime: '17 min',
+    hasVideo: false,
+  },
+  {
+    slug: 'strategy-at-the-speed-of-insight',
+    title: 'Strategy at the Speed of Insight',
+    date: '2025-12-16',
+    category: 'BUILD',
+    readingTime: '16 min',
+    hasVideo: false,
+  },
+  {
+    slug: 'the-words-came-back',
+    title: 'The Words Came Back',
+    date: '2025-12-01',
+    category: 'ORIGIN',
+    readingTime: '5 min',
+    hasVideo: false,
+  },
+];
+
+// ─── Data store (in-memory, persisted to localStorage) ───
+const STORAGE_KEY = 'bionic_dashboard_data';
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  // Default: seed with zeros
+  return ARTICLES.map(a => ({
+    slug: a.slug,
+    websiteViews: 0,
+    liImpressions: 0,
+    liReactions: 0,
+    liComments: 0,
+    liShares: 0,
+    subscribers: 0,
+    weeklyHistory: [],
+  }));
+}
+
+function persistData(data) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(STORAGE_KEY + '_updated', new Date().toISOString());
+  } catch(e) {}
+}
+
+let DATA = loadData();
+
+// ─── Score calculation ───
+function calcScore(d) {
+  // Weighted: website views (25%), LI impressions (20%), reactions (20%), comments (25%), subscribers (10%)
+  const maxViews = Math.max(...DATA.map(x => x.websiteViews), 1);
+  const maxImp = Math.max(...DATA.map(x => x.liImpressions), 1);
+  const maxReact = Math.max(...DATA.map(x => x.liReactions), 1);
+  const maxComm = Math.max(...DATA.map(x => x.liComments), 1);
+  const maxSubs = Math.max(...DATA.map(x => x.subscribers), 1);
+
+  return Math.round(
+    (d.websiteViews / maxViews) * 25 +
+    (d.liImpressions / maxImp) * 20 +
+    (d.liReactions / maxReact) * 20 +
+    (d.liComments / maxComm) * 25 +
+    (d.subscribers / maxSubs) * 10
+  );
+}
+
+function scoreClass(score) {
+  if (score >= 70) return 'score-high';
+  if (score >= 40) return 'score-med';
+  return 'score-low';
+}
+
+// ─── KPIs ───
+function renderKPIs() {
+  const totalViews = DATA.reduce((s, d) => s + d.websiteViews, 0);
+  const totalImpressions = DATA.reduce((s, d) => s + d.liImpressions, 0);
+  const totalReactions = DATA.reduce((s, d) => s + d.liReactions, 0);
+  const totalComments = DATA.reduce((s, d) => s + d.liComments, 0);
+  const totalSubs = DATA.reduce((s, d) => s + d.subscribers, 0);
+  const avgScore = DATA.length ? Math.round(DATA.reduce((s, d) => s + calcScore(d), 0) / DATA.length) : 0;
+
+  const kpis = [
+    { label: 'Website Views', value: totalViews.toLocaleString(), change: '' },
+    { label: 'LI Impressions', value: totalImpressions.toLocaleString(), change: '' },
+    { label: 'LI Reactions', value: totalReactions.toLocaleString(), change: '' },
+    { label: 'LI Comments', value: totalComments.toLocaleString(), change: '' },
+    { label: 'Subscribers', value: totalSubs.toLocaleString(), change: '' },
+    { label: 'Avg Score', value: avgScore + '/100', change: '' },
+  ];
+
+  document.getElementById('kpiGrid').innerHTML = kpis.map(k => `
+    <div class="kpi-card">
+      <div class="label">${k.label}</div>
+      <div class="value">${k.value}</div>
+      ${k.change ? `<div class="change ${k.changeDir}">${k.change}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+// ─── Scorecard table ───
+function renderScorecard() {
+  const sorted = [...DATA].map((d, i) => ({...d, article: ARTICLES[i], score: calcScore(d)}))
+    .sort((a, b) => b.score - a.score);
+
+  const maxViews = Math.max(...DATA.map(x => x.websiteViews), 1);
+
+  document.getElementById('scorecardBody').innerHTML = sorted.map(d => `
+    <tr>
+      <td class="article-title">${d.article.title}</td>
+      <td>
+        <div class="bar-container"><div class="bar-fill" style="width: ${(d.websiteViews / maxViews) * 100}%"></div></div>
+        ${d.websiteViews.toLocaleString()}
+      </td>
+      <td>${d.liImpressions.toLocaleString()}</td>
+      <td>${d.liReactions.toLocaleString()}</td>
+      <td>${d.liComments.toLocaleString()}</td>
+      <td>${d.subscribers}</td>
+      <td><span class="score-badge ${scoreClass(d.score)}">${d.score}</span></td>
+    </tr>
+  `).join('');
+}
+
+// ─── Charts ───
+let channelChartInstance, trendChartInstance;
+
+function renderCharts() {
+  // Channel comparison
+  const labels = ARTICLES.map(a => a.title.length > 25 ? a.title.substring(0, 25) + '…' : a.title);
+
+  if (channelChartInstance) channelChartInstance.destroy();
+  channelChartInstance = new Chart(document.getElementById('channelChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Website Views',
+          data: DATA.map(d => d.websiteViews),
+          backgroundColor: '#E8705A',
+          borderRadius: 4,
+        },
+        {
+          label: 'LI Impressions',
+          data: DATA.map(d => d.liImpressions),
+          backgroundColor: '#1A1A1A',
+          borderRadius: 4,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } } },
+      scales: {
+        x: { ticks: { font: { size: 10 } }, grid: { display: false } },
+        y: { ticks: { font: { size: 10 } }, grid: { color: '#f0ece7' } },
+      },
+    },
+  });
+
+  // Trend (aggregate weekly data if available)
+  const weekLabels = ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8'];
+  const weekData = weekLabels.map((_, i) => {
+    return DATA.reduce((sum, d) => {
+      return sum + (d.weeklyHistory && d.weeklyHistory[i] ? d.weeklyHistory[i].views || 0 : 0);
+    }, 0);
+  });
+
+  if (trendChartInstance) trendChartInstance.destroy();
+  trendChartInstance = new Chart(document.getElementById('trendChart'), {
+    type: 'line',
+    data: {
+      labels: weekLabels,
+      datasets: [{
+        label: 'Total Weekly Views',
+        data: weekData,
+        borderColor: '#E8705A',
+        backgroundColor: 'rgba(232, 112, 90, 0.1)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 4,
+        pointBackgroundColor: '#E8705A',
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false } },
+        y: { grid: { color: '#f0ece7' }, beginAtZero: true },
+      },
+    },
+  });
+}
+
+// ─── Insights ───
+function renderInsights() {
+  const scored = DATA.map((d, i) => ({...d, article: ARTICLES[i], score: calcScore(d)}));
+  const best = scored.reduce((a, b) => a.score > b.score ? a : b);
+  const worst = scored.reduce((a, b) => a.score < b.score ? a : b);
+
+  const totalComments = DATA.reduce((s, d) => s + d.liComments, 0);
+  const totalReactions = DATA.reduce((s, d) => s + d.liReactions, 0);
+  const engagementRate = totalReactions > 0 ? ((totalComments / totalReactions) * 100).toFixed(1) : 0;
+
+  const hasVideo = scored.filter(s => s.article.hasVideo);
+  const noVideo = scored.filter(s => !s.article.hasVideo);
+  const avgVideoScore = hasVideo.length ? Math.round(hasVideo.reduce((s, d) => s + d.score, 0) / hasVideo.length) : 0;
+  const avgNoVideoScore = noVideo.length ? Math.round(noVideo.reduce((s, d) => s + d.score, 0) / noVideo.length) : 0;
+
+  const insights = [];
+
+  if (best.score > 0) {
+    insights.push({
+      icon: 'grow', emoji: '🏆',
+      text: `<strong>"${best.article.title}"</strong> is your top-performing article (score: ${best.score}/100). Double down on this topic and format.`
+    });
+  }
+
+  if (worst.score < best.score && worst.score >= 0) {
+    insights.push({
+      icon: 'watch', emoji: '📉',
+      text: `<strong>"${worst.article.title}"</strong> scored lowest (${worst.score}/100). Consider: was the hook strong enough? Was the LinkedIn post format optimised?`
+    });
+  }
+
+  if (hasVideo.length > 0 && noVideo.length > 0) {
+    const diff = avgVideoScore - avgNoVideoScore;
+    if (diff > 0) {
+      insights.push({
+        icon: 'grow', emoji: '🎬',
+        text: `Articles with video explainers score <strong>${diff} points higher</strong> on average. Prioritise adding video to remaining articles.`
+      });
+    }
+  }
+
+  insights.push({
+    icon: 'act', emoji: '💡',
+    text: `Comment-to-reaction ratio is <strong>${engagementRate}%</strong>. LinkedIn's algorithm heavily favours comments over reactions — aim for 10%+ by ending posts with a specific question.`
+  });
+
+  insights.push({
+    icon: 'grow', emoji: '📧',
+    text: `<strong>${DATA.reduce((s, d) => s + d.subscribers, 0)} total subscribers</strong> from ${ARTICLES.length} articles. Target: 2-3 subscribers per article per week to build compounding newsletter growth.`
+  });
+
+  document.getElementById('insightsPanel').innerHTML = insights.map(i => `
+    <div class="insight-item">
+      <div class="insight-icon ${i.icon}">${i.emoji}</div>
+      <div class="insight-text">${i.text}</div>
+    </div>
+  `).join('');
+}
+
+// ─── Input forms ───
+function renderInputForms() {
+  let html = `
+    <div class="form-grid" style="margin-bottom: 12px;">
+      <label>Article</label>
+      <label>Site Views</label>
+      <label>LI Impressions</label>
+      <label>LI Reactions</label>
+      <label>LI Comments</label>
+      <label>Subscribers</label>
+    </div>
+  `;
+
+  ARTICLES.forEach((a, i) => {
+    const d = DATA[i];
+    html += `
+      <div class="form-grid">
+        <div style="font-size: 13px; font-weight: 500;">${a.title.length > 35 ? a.title.substring(0, 35) + '…' : a.title}</div>
+        <input type="number" id="views_${i}" value="${d.websiteViews}" min="0">
+        <input type="number" id="imp_${i}" value="${d.liImpressions}" min="0">
+        <input type="number" id="react_${i}" value="${d.liReactions}" min="0">
+        <input type="number" id="comm_${i}" value="${d.liComments}" min="0">
+        <input type="number" id="subs_${i}" value="${d.subscribers}" min="0">
+      </div>
+    `;
+  });
+
+  document.getElementById('inputForms').innerHTML = html;
+}
+
+// ─── Actions ───
+function saveData() {
+  ARTICLES.forEach((a, i) => {
+    DATA[i].websiteViews = parseInt(document.getElementById(`views_${i}`).value) || 0;
+    DATA[i].liImpressions = parseInt(document.getElementById(`imp_${i}`).value) || 0;
+    DATA[i].liReactions = parseInt(document.getElementById(`react_${i}`).value) || 0;
+    DATA[i].liComments = parseInt(document.getElementById(`comm_${i}`).value) || 0;
+    DATA[i].subscribers = parseInt(document.getElementById(`subs_${i}`).value) || 0;
+  });
+
+  persistData(DATA);
+  renderAll();
+}
+
+function exportData() {
+  let csv = 'Article,Date,Category,Website Views,LI Impressions,LI Reactions,LI Comments,Subscribers,Score\n';
+  DATA.forEach((d, i) => {
+    const a = ARTICLES[i];
+    csv += `"${a.title}",${a.date},${a.category},${d.websiteViews},${d.liImpressions},${d.liReactions},${d.liComments},${d.subscribers},${calcScore(d)}\n`;
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `bionic-content-performance-${new Date().toISOString().split('T')[0]}.csv`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function clearData() {
+  if (confirm('This will reset all metrics to zero. Are you sure?')) {
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY + '_updated');
+    DATA = loadData();
+    renderAll();
+  }
+}
+
+// ─── Render all ───
+function renderAll() {
+  renderKPIs();
+  renderScorecard();
+  renderCharts();
+  renderInsights();
+  renderInputForms();
+
+  const updated = localStorage.getItem(STORAGE_KEY + '_updated');
+  document.getElementById('lastUpdated').textContent = updated
+    ? 'Last updated: ' + new Date(updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+    : 'Last updated: No data yet';
+}
+
+renderAll();
+</script>
+</body>
+</html>
