@@ -76,7 +76,7 @@ export default function ArticleClient({ meta, content, related }: ArticleClientP
             <div className="h-8" />
 
             {meta.subtitle && (
-              <p className="text-[#1A1A1A] text-lg md:text-[1.125rem] leading-relaxed max-w-[40rem]">
+              <p className="text-text-secondary text-xl md:text-[1.35rem] leading-relaxed max-w-[40rem]">
                 {meta.subtitle}
               </p>
             )}
